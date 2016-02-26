@@ -4,7 +4,7 @@ defmodule PrideFormatterTest do
 
   for x <- 1..500 do
     test "the truth #{x}" do
-      :timer.sleep 5
+      :timer.sleep 3
       assert 1 + 1 == 2
     end
   end
@@ -18,6 +18,11 @@ defmodule RainbowTest do
   test "colours/0" do
     assert Rainbow.colours |> :array.is_array
   end
+
+  # Uncomment this to see what a failure looks like.
+  # test "fail" do
+  #   assert false
+  # end
 
   test "colour/1 handles lots of ints" do
     for n <- 0..10_000 do

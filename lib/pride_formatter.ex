@@ -5,6 +5,7 @@ defmodule ExUnit.PrideFormatter do
 
   alias ExUnit.CLIFormatter
   alias ExUnit.PrideFormatter.Rainbow
+  alias ExUnit.Test
   use GenEvent
 
   # Start an escape sequence
@@ -17,6 +18,12 @@ defmodule ExUnit.PrideFormatter do
     CLIFormatter.init(opts)
   end
 
+  def handle_event({:test_finished, %{state: {result, _}}} = e, s)
+  when result == :failed
+  do
+    CLIFormatter.handle_event(e, s)
+  end
+
   def handle_event({:test_finished, _} = event, state) do
     colour = Rainbow.colour( state.tests_counter )
     IO.write "#{@esc}38;5;#{colour}m"
@@ -27,8 +34,8 @@ defmodule ExUnit.PrideFormatter do
     {:ok, state}
   end
 
-  def handle_event(event, config) do
-    CLIFormatter.handle_event(event, config)
+  def handle_event(event, state) do
+    CLIFormatter.handle_event(event, state)
   end
 end
 
