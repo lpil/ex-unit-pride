@@ -5,7 +5,6 @@ defmodule ExUnit.PrideFormatter do
 
   alias ExUnit.CLIFormatter
   alias ExUnit.PrideFormatter.Rainbow
-  alias ExUnit.Test
   use GenEvent
 
   # Start an escape sequence
@@ -32,6 +31,11 @@ defmodule ExUnit.PrideFormatter do
     IO.write @nnd
     state = %{ state | colors: [enabled: true] }
     {:ok, state}
+  end
+
+  def handle_event({:suite_finished, _, _} = event, state) do
+    IO.write "\n\nFabulous run"
+    CLIFormatter.handle_event(event, state)
   end
 
   def handle_event(event, state) do
