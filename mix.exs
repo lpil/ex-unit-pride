@@ -7,18 +7,17 @@ defmodule ExUnitPride.Mixfile do
     [
       app: :ex_unit_pride,
       version: @version,
-      elixir: "~> 1.0",
-      deps: deps,
-      build_embedded: Mix.env == :prod,
-      start_permanent: Mix.env == :prod,
-
+      elixir: "~> 1.6",
+      deps: deps(),
+      build_embedded: Mix.env() == :prod,
+      start_permanent: Mix.env() == :prod,
       name: "ExUnit Pride",
       source_url: "https://github.com/lpil/ex-unit-pride",
       description: "Run your tests with pride",
       package: [
         maintainers: ["Louis Pilfold"],
         licenses: ["MIT"],
-        links: %{ "GitHub" => "https://github.com/lpil/ex-unit-pride" },
+        links: %{"GitHub" => "https://github.com/lpil/ex-unit-pride"}
       ]
     ]
   end
@@ -31,10 +30,8 @@ defmodule ExUnitPride.Mixfile do
 
   defp deps do
     [
-      # Code style linter
-      {:dogma, only: [:dev, :test]},
       # Automatic test runner
-      {:mix_test_watch, only: :dev},
+      {:mix_test_watch, "~> 0.1", only: :dev}
     ]
   end
 end

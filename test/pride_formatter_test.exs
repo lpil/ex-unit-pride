@@ -4,7 +4,7 @@ defmodule PrideFormatterTest do
 
   for x <- 1..500 do
     test "the truth #{x}" do
-      :timer.sleep 3
+      :timer.sleep(3)
       assert 1 + 1 == 2
     end
   end
@@ -16,7 +16,7 @@ defmodule RainbowTest do
   alias ExUnit.PrideFormatter.Rainbow
 
   test "colours/0" do
-    assert Rainbow.colours |> :array.is_array
+    assert Rainbow.colours() |> :array.is_array()
   end
 
   # Uncomment this to see what a failure looks like.
@@ -26,7 +26,7 @@ defmodule RainbowTest do
 
   test "colour/1 handles lots of ints" do
     for n <- 0..10_000 do
-      assert n |> Rainbow.colour |> is_integer
+      assert n |> Rainbow.colour() |> is_integer
     end
   end
 end

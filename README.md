@@ -10,13 +10,13 @@ Run your tests with **pride**.
 # mix.exs
 def deps do
   [
-    {:ex_unit_pride, only: :test},
+    {:ex_unit_pride, "~> 0.1", only: :test},
   ]
 end
 ```
 ```elixir
 # test/test_helper.exs
-ExUnit.start( formatters: [ExUnit.PrideFormatter] )
+ExUnit.start(formatters: [ExUnit.PrideFormatter])
 ```
 
 

@@ -1,1 +1,1 @@
-ExUnit.start( formatters: [ExUnit.PrideFormatter] )
+ExUnit.start(formatters: [ExUnit.PrideFormatter])
